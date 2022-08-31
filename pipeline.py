@@ -2,19 +2,19 @@ from node import Node
 from future import Future
 from graph import graph
 
-@Node(verbose=False)
-def add2(a, b):
-    return a+b
+@Node()
+def _add(a, b):
+    return a + b
 
-@Node(verbose=False)
+@Node()
 def add(a, b):
-    return add2(a,b)
+    return _add(a, b)
 
-@Node(verbose=False)
+@Node()
 def subtract(a, b):
     return a - b
 
-@Node(verbose=False)
+@Node()
 def multiply(a, b, c):
     return a * b * c
 
@@ -26,7 +26,5 @@ def pipeline(a, b, c, d):
     return multiply_future
 
 pipeline_future: Future = pipeline(10, 2, 5, 6)
-print(graph)
-# print(pipeline_future.resolve())
-# print(graph)
-# graph.visualize()
+print("result: ", pipeline_future.resolve())
+graph.visualize_graph()
