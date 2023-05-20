@@ -5,7 +5,7 @@ Workflow orchestrators like [Airflow](https://airflow.apache.org/), [Kubeflow](h
 **Main motivation:**  
 I was using Kubeflow at work. As a workflow orchestrator, it excels in the reliability department but I hated the development experience of writing pipelines. It felt like it was getting in my way of writing Python code.
 
-I wanted to explore the concept of computational graphs and an easier, flexible, non-obstructive way to create them.
+I wanted to explore the concept of computational graphs and an easier, more flexible, non-obstructive way to create them.
 
 # Features
 1. Can create dynamic graphs in a nested fashion.
@@ -122,7 +122,7 @@ def main():
 ```
 Each function from `A` to `G` takes ~1 sec to execute. When we resolve function `G` without any optimizations, the entire program would take ~7 sec to execute since it will execute all the 7 functions from `A` to `G` serially.
 
-Here is a visualization of how the DAG would look like when we try to resolve the `G` function
+Here is a visualization (generated with [graphonline](https://graphonline.ru/en/)) of how the DAG would look like when we try to resolve the `G` function
 
 ![alt text](images/parallel_execution_demo.png "Static Graph View")
 
@@ -138,15 +138,15 @@ Time taken to execute:  5.143002271652222
 ```
 It took just ~5 seconds instead of ~7 seconds. The independent nodes have been executed in parallel :)
 
-Note: It should've ideally taken ~4 seconds as `F` and `E` can also be executed in parallel as well.
+**Note:** It should've ideally taken ~4 seconds as `F` and `E` can also be executed in parallel as well. Further optimisation can be done with priority queues.
 
 # Todo
 
-- [] Write basic tests
-- [] Raise error if root function is not a `Node`
-- [] Handle multiple return values from `Node` decorated functions
-- [] Read about [TensorFlow graph optimizations](https://jonathan-hui.medium.com/tensorflow-eager-execution-v-s-graph-tf-function-6edaa870b1f1)
-- [] Capture unreturned nodes
-- [] Check for recursive functions and cycle creations
-- [] Optimise parallel execution further with priority queues (ideally the [program](parallel_execution/pipeline.py) should take just ~4 sec)
-- [] Better graph generation which is more intuitive
+- [ ] Write basic tests
+- [ ] Raise error if root function is not a `Node`
+- [ ] Handle multiple return values from `Node` decorated functions
+- [ ] Read about [TensorFlow graph optimizations](https://jonathan-hui.medium.com/tensorflow-eager-execution-v-s-graph-tf-function-6edaa870b1f1)
+- [ ] Capture unreturned nodes
+- [ ] Check for recursive functions and cycle creations
+- [ ] Optimise parallel execution further with priority queues (ideally the [program](parallel_execution/pipeline.py) should take just ~4 sec)
+- [ ] Better graph generation which is more intuitive
