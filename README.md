@@ -1,5 +1,5 @@
 # TinyComputationGraph
-Build computation graphs from python functions
+Build computation graphs from Python functions
 
 
 ## Graph Visualisation
@@ -39,4 +39,4 @@ graph.visualize_graph()
 
 When we run the pipeline.py (`python pipeline.py`) file, it produces the following static graph view of the computational graph
 
-![alt text](images/graph.png "Static Graph View")
+![alt text](images/pydot_graph.png "Static Graph View")

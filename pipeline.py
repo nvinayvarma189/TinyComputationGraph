@@ -27,4 +27,4 @@ def pipeline(a, b, c, d):
 
 pipeline_future: Future = pipeline(10, 2, 5, 6)
 print("result: ", pipeline_future.resolve())
-graph.visualize_graph()
+graph.visualize()
