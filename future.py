@@ -31,6 +31,7 @@ class Future:
                     graph.add_edge(self, nested_future, "nested_futures")
                     self.result = self.result.resolve()
                 self.state = "RESOLVED"
+                print("Resolved and executed the node: ", self.func.__name__)
                 graph.set_root_node(self)
                 return self.result
             else:

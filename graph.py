@@ -1,7 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import pydot
-from graphviz import Digraph
 
 class Graph:
     def __init__(self):
@@ -28,7 +27,7 @@ class Graph:
     def __repr__(self) -> str:
         return str(self.dict)
 
-    def visualize(self):
+    def visualize_graph_nx(self):
         G = nx.DiGraph()
 
         parent_nested_edges = []
@@ -50,9 +49,9 @@ class Graph:
         nx.draw_networkx_nodes(G, pos=nx.circular_layout(G), nodelist=[self.root_node], node_color="tab:green")
         nx.draw_networkx_labels(G, pos=nx.circular_layout(G), labels=labels)
 
-        plt.show()
+        plt.savefig('images/nx_graph.png', format="PNG")
 
-    def visualize_graph(self):
+    def visualize_graph_pydot(self):
         graph = pydot.Dot(graph_type='digraph',fontsize = 20  )
         cluster_mapping = {}
 
@@ -79,7 +78,7 @@ class Graph:
         
         graph.add_subgraph(list(cluster_mapping.values())[0])
         graph.set_label("Static Graph View")
-        graph.write("graph.png", prog = 'fdp',format = 'png')
+        graph.write("images/pydot_graph.png", prog = 'fdp',format = 'png')
 
     @staticmethod
     def create_cluster(cluster_mapping, cluster_name):

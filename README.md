@@ -34,7 +34,7 @@ def pipeline(a, b, c, d):
     return multiply_future
 
 pipeline_future: Future = pipeline(10, 2, 5, 6)
-graph.visualize_graph()
+graph.visualize_graph_pydot()
 ```
 
 When we run the pipeline.py (`python pipeline.py`) file, it produces the following static graph view of the computational graph
