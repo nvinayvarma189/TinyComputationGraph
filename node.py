@@ -9,7 +9,6 @@ class Node:
         def outer(*args, **kwargs):
             if self.verbose:
                 print('outer()')
-            print(func.__name__)
             graph.add_node(func.__name__)
             return Future(func, *args, **kwargs)
 
