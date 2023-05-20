@@ -11,6 +11,7 @@ class Future:
     def __init__(self, func, *args, **kwargs):
         self.func = func
         self.name = func.__name__
+        self.value = None
         self.args = args
         self.dict_args = self.get_args_as_dict()
         self.resolved_args = self.get_resolved_args()
@@ -121,6 +122,8 @@ def main():
     for thread in threads:
         thread.join()
 
+    print("Result after parallel execution: ", executed[g.name])
+
 start = time.time()
 main()
-print(time.time() - start)
+print("Time taken to execute: ", time.time() - start)
